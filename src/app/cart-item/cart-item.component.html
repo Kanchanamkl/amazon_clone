@@ -1,1 +1,14 @@
-<p>cart-item works!</p>
+<div>
+    <img src="{{item_.image}}" alt="headset">
+    <p>{{item_.description}}</p>
+    <div>⭐⭐⭐⭐⭐</div>
+    <div>${{item_.price}}</div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary" type="button">-</button>
+            <input type="text" class="form-control" value="{{item_.qty}}" >
+            <button class="btn btn-outline-secondary" type="button">+</button>
+            
+        </div> 
+      
+</div>
