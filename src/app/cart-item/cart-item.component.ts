@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Item} from '../dto/Item_';
 
 
@@ -8,9 +8,18 @@ import { Item} from '../dto/Item_';
   styleUrls: ['./cart-item.component.scss']
 })
 export class CartItemComponent  implements OnInit{
+   
+   @Input()
+   item_!:Item; 
+
+  //item_ = new Item("I001","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5PaUFQAXmrhBYZCMKxrLaf0J99TugkmSLtw&s","ZIUMIER Gaming Headset with Microphone", 4 ,34,5);
+
+  @Output()
+  cartOnChange = new EventEmitter<number>(); 
+
+  inCart =0;
 
 
-  item_ = new Item("I001","https://m.media-amazon.com/images/I/71nh1VxLzuL._AC_UY218_.jpg","ZIUMIER Gaming Headset with Microphone, Compatible with PS4 PS5 Xbox One PC Laptop, Over-Ear Headphones with LED RGB Light, Noise Canceling Mic, 7.1 Stereo Surround Sound", 4 ,34,5);
 
 
   constructor(){
@@ -18,6 +27,12 @@ export class CartItemComponent  implements OnInit{
   }
   ngOnInit(): void {
    // throw new Error('Method not implemented.');
+  }
+
+  updateCart(increment : boolean){
+    increment? this.inCart++: this.inCart--;
+    this.cartOnChange.emit(this.inCart);
+
   }
 
 }

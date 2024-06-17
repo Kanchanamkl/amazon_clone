@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { Item } from './dto/Item_';
-import {DUMMY_DATA} from "./dummy-data";
+import { Item } from '../dto/Item_';
+import { DUMMY_DATA } from '../dummy-data';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class AppComponent {
-  title = 'amazon-clone';
+export class HomeComponent {
   items = DUMMY_DATA;
 
   cartItems : Array<{code: string , qty: number}>=[];  
@@ -33,15 +32,5 @@ export class AppComponent {
     
     console.log(this.cartItems)
 
-
-  }
-
-  getTotalItemsInCart(){
-    let totalItems = 0;
-    this.cartItems.forEach(item => totalItems += item.qty)
-    return totalItems; 
   }
 }
-
-
-//ng g m app-routing --flat    : flat use for keep top level in folder structure
