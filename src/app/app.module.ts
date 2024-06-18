@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CartService } from './service/cart.service';
 
 
 // const routes: Routes=[

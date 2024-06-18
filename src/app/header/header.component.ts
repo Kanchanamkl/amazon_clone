@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
+import { CartService } from '../service/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +11,8 @@ export class HeaderComponent {
   @Input()
   totalCartItems = 0;
 
-  constructor(){
-  }
+  constructor(private cartService: CartService){
+  }  
 
   ngOnInit():void{
      
