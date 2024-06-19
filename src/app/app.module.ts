@@ -11,6 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CartService } from './service/cart.service';
+import { CartRowComponent } from './cart-row/cart-row.component';
 
 
 // const routes: Routes=[
@@ -45,7 +46,8 @@ import { CartService } from './service/cart.service';
     CartItemComponent,
     ItemComponent,
     HomeComponent,
-    CartComponent
+    CartComponent,
+    CartRowComponent
   ],
   imports: [
     BrowserModule,

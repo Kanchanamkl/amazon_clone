@@ -13,7 +13,7 @@ const routes: Routes=[
 
   },
   {
-    path: 'item',
+    path: 'item/:code',
     component: ItemComponent
   },
   {
@@ -36,7 +36,7 @@ const routes: Routes=[
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes , {scrollPositionRestoration:'enabled'})      // 'top' -> scroll to top of the page
   ],
 
   exports:[RouterModule]

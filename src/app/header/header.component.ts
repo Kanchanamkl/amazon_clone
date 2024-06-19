@@ -8,14 +8,33 @@ import { CartService } from '../service/cart.service';
 })
 export class HeaderComponent {
 
-  @Input()
+  //@Input()
   totalCartItems = 0;
 
   constructor(private cartService: CartService){
   }  
 
   ngOnInit():void{
+
+    // setInterval(()=>{
+    //   this.udpateCart();
+    // } , 1000)
+
+    this.onCartChanged();
      
   }
+
+
+  onCartChanged(){
+    this.cartService.getTotalItemsInCart().subscribe(data => this.totalCartItems = data)
+  }
+
+
+  // udpateCart(){
+    
+  //    this.totalCartItems = this.cartService.getTotalItemsInCart()
+  // }
+
+
 
 }

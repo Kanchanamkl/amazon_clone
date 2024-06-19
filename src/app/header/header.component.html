@@ -1,14 +1,15 @@
 <header>
-    <div class="img-logo">
+    <div class="img-logo" routerLink="/home">
         <img src="assets/images/amazon_logo.png"alt="amazon_logo">
     </div>
     
     
-    <div class="cart-contaioner">
+    <div class="cart-contaioner" routerLink="/cart">
+        <!-- <button (click)="udpateCart()">Up date Cart</button> -->
         <img src="assets/images/shopping_cart_48dp_FILL0_wght400_GRAD0_opsz48.png"alt="amazon_logo">
         <span>{{totalCartItems}}</span>
 
-       <div class="cart-icon"></div> 
+       <div class="cart-icon" ></div> 
     </div>
     
 </header>

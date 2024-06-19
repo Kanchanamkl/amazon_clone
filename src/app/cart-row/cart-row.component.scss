@@ -1,0 +1,61 @@
+
+:host{
+    display:flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 1px solid lightgray;
+
+    &:hover{
+        border:1px solid lightgray ;
+        background-color: lightgray;
+    }
+    padding-right: 30px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.item-image{
+    width: 70px;
+    object-fit: contain;
+    height: 100px;
+    padding: 8px;
+}
+
+.remove-btn{
+    background-color:rgba(148, 148, 137, 0.504);
+    border-color:rgb(148, 148, 137) ;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+
+.item-title{
+    flex-grow: 1;
+}
+
+.item-qty{
+    font-weight: bold;
+    width: 70px;
+}
+
+.item-unit-price{
+    width: 100px;
+}
+
+.item-total-price{
+    font-size: 1.3rem;
+    font-weight: bold;
+    width: 100px;
+    
+}
+
+.item-remove{
+    width: 50px;
+}

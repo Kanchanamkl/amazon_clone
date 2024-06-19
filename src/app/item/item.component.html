@@ -1,32 +1,30 @@
 <div class="item-container">
-    <img class="item-image" src="https://m.media-amazon.com/images/I/61p7PGd2lSL._AC_SX679_.jpg" alt="product-image">
+    <img class="item-image" src="{{item.image}}" alt="product-image">
     <div class="item-details">
 
-        <h2 class="item-title">S*MAX Gaming Chair with Footrest Thicken Seat Black Gaming Chairs with 3D Armrest Gamer
-            Chair PU Leather Headrest and Lumbar Support High Back Gamer Chairs for Adults</h2>
+        <h2 class="item-title">{{item.title}}</h2>
 
-        <div class="item-rating" [ngSwitch]="4">
+        <div class="item-rating" [ngSwitch]="item.rating">
             <div *ngSwitchCase="5">⭐⭐⭐⭐⭐</div>
             <div *ngSwitchCase="4">⭐⭐⭐⭐</div>
             <div *ngSwitchCase="3">⭐⭐⭐</div>
             <div *ngSwitchCase="2">⭐⭐</div>
             <div *ngSwitchCase="1">⭐</div>
         </div>
-        <div class="item-price">Price: <span>$280.45</span></div>
-        <div class="item-stock">In Stock : <span>{{10-6}}</span></div>
-        <div *ngIf="false" class="out-of-stock">Out of Stock</div>
+        <div class="item-price">Price: <span>{{item.price | currency:'$'}}</span></div>
+        <div *ngIf="toCart !== item.qty" class="item-stock">In Stock : <span>{{item.qty-toCart}}</span></div>
+        <div *ngIf="toCart === item.qty" class="out-of-stock">Out of Stock</div>
         <div>Add To Cart</div>
         <div class="input-group mb-3  add-to-cart-ctrl">
-            <button class="btn btn-outline-secondary" type="button">-</button>
-            <input type="text" class="form-control" [disabled]="true" value="4">
-            <button class="btn btn-outline-secondary" type="button">+</button>
+            <button class="btn btn-outline-secondary" type="button" (click)="updateCart(false)">-</button>
+            <input type="text" class="form-control" [disabled]="true" [(ngModel)]="toCart">
+            <button class="btn btn-outline-secondary" type="button" (click)="updateCart(true)">+</button>
         </div>
     </div>
 </div>
-<div class="item-description">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti ex aperiam tenetur qui quis exercitationem
-    repudiandae libero impedit nemo, fugiat eaque odio, aut cum. Architecto accusantium vel iste hic.
-    Perferendis deleniti consequatur cumque, voluptatum exercitationem, distinctio numquam fugit fugiat quasi cum
-    quidem! Voluptatibus explicabo minus placeat dolorem aspernatur dolores omnis suscipit natus, officiis doloribus
-    quidem blanditiis officia in ipsam.
+<div class="item-description" [innerHTML]="item.description??'No Description'">       <!-- [innnerHTML] : its avoid (xss) inside html tags and fillter text inside html  -->
+    <!-- {{item.description??'No Description'}} -->
+
+
+
 </div>
