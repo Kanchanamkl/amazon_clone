@@ -45,13 +45,13 @@ export class CartItemComponent  implements OnInit{
 
    // this.router.navigateByUrl(`/item/${this.item_.code}`);
 
-   this.router.navigate(['/item',this.item_.code])
+   this.router.navigate(['/item',this.item_.itemCode])
 
   }
 
 
   loadInCartQtyByItem(){
-    const item_qty = this.cartService.getQtyByItem(this.item_.code);
+    const item_qty = this.cartService.getQtyByItem(this.item_.itemCode);
     this.toCart = item_qty;
   }
 

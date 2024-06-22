@@ -1,22 +1,22 @@
 <div class="cart-item" (click)="navigateToItem()" >
-    <img class="item-image" src="{{item_.image}}" alt="headset">
-    <p class="item-description">{{item_.title}}</p>
-    <ng-container [ngSwitch]="item_.rating">
+    <img class="item-image" src="{{item_.itemImgUrl}}" alt="headset">
+    <p class="item-description">{{item_.itemTitle}}</p>
+    <ng-container [ngSwitch]="item_.itemRating">
     <div *ngSwitchCase ="5">⭐⭐⭐⭐⭐</div>
     <div *ngSwitchCase ="4">⭐⭐⭐⭐</div>
     <div *ngSwitchCase ="3">⭐⭐⭐</div>
     <div *ngSwitchCase ="2">⭐⭐</div>
     <div *ngSwitchCase ="1">⭐</div>
     </ng-container>
-    <div class="item-price">${{item_.price}}</div> 
-    <div *ngIf="toCart !== item_.qty"  class="item-stock">In Stock : <span>{{item_.qty-toCart}}</span></div>
-    <div *ngIf="toCart === item_.qty" class="out-of-stock">Out of Stock</div>
+    <div class="item-price">${{item_.itemPrice}}</div> 
+    <div *ngIf="toCart !== item_.itemQty"  class="item-stock">In Stock : <span>{{item_.itemQty-toCart}}</span></div>
+    <div *ngIf="toCart === item_.itemQty" class="out-of-stock">Out of Stock</div>
     <div>Add To Cart</div>
     <div class="input-group mb-3  add-to-cart-ctrl"(click)="$event.stopPropagation()">
        
             <button [disabled]="toCart===0" class="btn btn-outline-secondary" type="button" (click)="updateCart(false)">-</button>
             <input type="text" class="form-control" [(ngModel)]="toCart" [disabled]="true">
-            <button [disabled]="toCart===item_.qty" class="btn btn-outline-secondary" type="button" (click)="updateCart(true)">+</button>
+            <button [disabled]="toCart===item_.itemQty" class="btn btn-outline-secondary" type="button" (click)="updateCart(true)">+</button>
             
         
       

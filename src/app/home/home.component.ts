@@ -13,15 +13,14 @@ export class HomeComponent implements OnInit{
    
   }
 
-  items!: Array<Item>;
+  items: Array<Item> =[];
  // cartItems : Array<{code: string , qty: number}>=[];  
 
-  constructor(private itemService : ItemService){
-
-    this.items = itemService.getAllItems();
-
-  }
-
+ constructor(private itemService: ItemService) {
+  this.itemService.getAllItems().subscribe(items => {
+    this.items = items;
+  });
+}
 
   
 

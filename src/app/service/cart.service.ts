@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Item } from '../dto/Item_';
+import { ItemService } from './item.service';
 
 @Injectable({
   providedIn: 'root'  // if use providedIn: 'root' then it will apply for whole application. 
@@ -13,11 +14,14 @@ export class CartService {
 
   private totalItemSubject = new Subject<number>();
 
-  constructor() { }
+  constructor(private itemService : ItemService) { 
+
+
+  }
 
    updateCart(it:Item , toCart: number){
 
-    const item =  this.cartItems.find(i =>i.code === it.code) // this method return true or false , if there already exists that object previously.
+    const item =  this.cartItems.find(i =>i.code === it.itemCode) // this method return true or false , if there already exists that object previously.
  
 
     if(item){
@@ -29,7 +33,7 @@ export class CartService {
       }
       
     }else{
-      this.cartItems.push({code: it.code , qty: toCart}) 
+      this.cartItems.push({code: it.itemCode , qty: toCart}) 
     }
 
     
@@ -66,5 +70,24 @@ export class CartService {
 
   getAllCartItems():Array<{code: string , qty: number}>{
     return this.cartItems;
+  }
+
+
+  removeItemFromCart(code: string):void{
+
+    this.cartItems = this.cartItems.filter(item => item.code != code)
+    this.calcutalteTotalItems();
+
+  }
+
+  getNetTotal() : number{
+
+    let total = 0;
+    this.cartItems.forEach(item => {
+      total +=this.itemService.getItem(item.code)!.itemPrice*item.qty;
+    })
+
+    return total;
+
   }
 }

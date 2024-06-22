@@ -1,9 +1,14 @@
-<div class="cart-item-container">
-    <app-cart-row *ngFor="let ci of cartItems"  [qty]="ci.qty" [item]="getItem(ci.code)"></app-cart-row>
-    
-      
-    
+<div class="cart" *ngIf = "cartItems.length !== 0">
+    <div class="cart-item-container">
+        <app-cart-row (click)="navigateToItem(ci.code)" *ngFor="let ci of cartItems"  [qty]="ci.qty" [item]="getItem(ci.code)"  (onReomve)="loadAllCartItems();  loadAllCartItems() "></app-cart-row>
+        
+    </div>
+    <div class="checkout-container">
+        <h2>Net Total : {{total | currency: "USD"}} </h2>
+        <button>Checkout</button>
+    </div>
 </div>
-<div>
-    container2
+
+<div class="no-item-window" *ngIf = "cartItems.length == 0" >
+    <h1>Please Add Items To Cart ! </h1>
 </div>

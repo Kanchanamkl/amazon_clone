@@ -60,7 +60,7 @@ export class ItemComponent implements OnInit {
   }
 
   loadInCartQtyByItem(){
-    const item_qty = this.cartService.getQtyByItem(this.item.code);
+    const item_qty = this.cartService.getQtyByItem(this.item.itemCode);
     this.toCart = item_qty;
   }
 
